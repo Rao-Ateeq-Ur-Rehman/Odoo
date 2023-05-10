@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    TREE/LIST VIEW-->
+    <record id="view_employee_tree" model="ir.ui.view">
+        <field name="name">employee.data.tree</field>
+        <field name="model">employee.data</field>
+        <field name="arch" type="xml">
+            <tree decoration-danger="age > 30" create="0">
+                <field name="name" string="Employee Name" optional="hide"/>
+                <field name="gender" string="Employee Gender" optional="hide"/>
+                <field name="dept" string="Employee Department" optional="hide"/>
+                <field name="active" string="Employee Active Status" optional="hide"/>
+                <field name="wfh" string="Employee WFH" optional="hide"/>
+                <field name="age" string="Employee Age" widget="integer_text" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+    <!--    FORM VIEW-->
+    <record id="view_employee_form" model="ir.ui.view">
+        <field name="name">employee.data.form</field>
+        <field name="model">employee.data</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h3>
+                            <group>
+                                <field name="review" widget="rating" class="mr-3" string="Employee Ratings"/>
+                            </group>
+                        </h3>
+                    </div>
+                    <group>
+                        <group style="padding:2%">
+                            <field name="name" style="border-bottom: 0.5px solid black;"/>
+                            <field name="age" style="border-bottom: 0.5px solid black;"/>
+                            <field name="wfh"/>
+                        </group>
+                        <group style="padding:2%">
+                            <field name="dept" style="border-bottom: 0.5px solid black;"/>
+                            <field name="gender" style="border-bottom: 0.5px solid black;"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" options="{'open_attachments': True}"/>
+                    <field name="message_ids"/>
+                    <field name="activity_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <!--    SEARCH VIEW-->
+    <record id="view_employee_searchView" model="ir.ui.view">
+        <field name="name">employee.data.search</field>
+        <field name="model">employee.data</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Employee Name"/>
+                <filter name="male_filter" string="Male" domain="[('gender','=','male')]"></filter>
+                <filter name="female_filter" string="FeMale" domain="[('gender','=','female')]"></filter>
+                <separator/>
+                <filter name="kids_filter" string="Kids" domain="[('age','&lt;=','10')]"></filter>
+                <separator/>
+                <filter name="archived_filter" string="Archived" domain="[('active','=',False)]"></filter>
+                <separator/>
+                <filter name="wfh_filter" string="Work From Home" domain="[('wfh','=',True)]"></filter>
+                <group expand="0" string="Group By">
+                    <filter string="Gender" name="group_by_gender" context="{'group_by' : 'gender'}"/>
+                </group>
+                <searchpanel>
+                    <field name="gender" string="Active" enable_counters="1"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+    <!--    KANBAN VIEW     -->
+    <record id="view_employee_kanban" model="ir.ui.view">
+        <field name="name">employee.data.kanban</field>
+        <field name="model">employee.data</field>
+        <field name="arch" type="xml">
+            <!-- Here create= 0 is for removing create option from the view-->
+            <kanban create="0">
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="dept"/>
+                <field name="active"/>
+                <field name="wfh"/>
+                <field name="age"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_card" id="card_view">
+                                <h1>Name:
+                                    <span t-esc="record.name.raw_value"></span>
+                                </h1>
+                                <h6>Gender:
+                                    <span t-esc="record.gender.raw_value"></span>
+                                </h6>
+                                <h6>Department:
+                                    <span t-esc="record.dept.raw_value"></span>
+                                </h6>
+                                <h6>Active:
+                                    <span t-esc="record.active.raw_value"></span>
+                                </h6>
+                                <h6>Work From Home:
+                                    <span t-esc="record.wfh.raw_value"></span>
+                                </h6>
+                                <h6>Age:
+                                    <span t-esc="record.age.raw_value"></span>
+                                </h6>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!--    GRAPH VIEW-->
+    <record id="view_employee_graph" model="ir.ui.view">
+        <field name="name">employee.data.graph</field>
+        <field name="model">employee.data</field>
+        <field name="arch" type="xml">
+            <graph>
+                <field name="name" string="Employee Name"/>
+                <field name="gender" string="Employee Gender"/>
+                <field name="active" string="Employee Active Status"/>
+                <field name="wfh" string="Employee WFH"/>
+            </graph>
+        </field>
+    </record>
+
+<!--    PIVOT VIEW-->
+    <record id="view_employee_Pivot" model="ir.ui.view">
+        <field name="name">employee.data.pivot</field>
+        <field name="model">employee.data</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="name" string="Employee Name"/>
+                <field name="gender" string="Employee Gender"/>
+                <field name="active" string="Employee Active Status"/>
+                <field name="wfh" string="Employee WFH"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="action_employee" model="ir.actions.act_window">
+        <field name="name">Employee Data</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">employee.data</field>
+        <field name="view_mode">kanban,pivot,graph,tree,form</field>
+        <field name="context">{'default_gender':'male'}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Employee Record
+            </p>
+        </field>
+    </record>
+
+
+    <record id="action_mac_view" model="ir.actions.client">
+        <field name="name">OWL Mac</field>
+        <field name="tag">employee.mac_js</field>
+    </record>
+
+    <menuitem id="employee_sub_menu_2"
+              name="Employees Sub Menu 2"
+              parent="employee_main_menu"
+              action="action_employee"
+              sequence="0"
+    />
+
+
+    <menuitem id="mac_owl"
+              name="Mac Owl"
+              parent="employee_main_menu"
+              action="action_mac_view"
+              sequence="0"
+    />
+</odoo>

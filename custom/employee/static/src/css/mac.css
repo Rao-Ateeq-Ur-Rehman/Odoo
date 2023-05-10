@@ -1,0 +1,34 @@
+.form_div{
+padding:5%;
+}
+.machine_input_field{
+    width:100% !important;
+    border:0.5px solid black;
+    margin-top:-0.5px;
+    height:4.25vh;
+}
+select.machine_selector {
+    width: 32%;
+    border: 1px solid black;
+    height: 5vh;
+    font-size: 15px;
+    font-weight: 600;
+    color: black;
+    margin-top: 2.5vh;
+    padding-left: 2%;
+}
+select#sienging_machine_selector{
+    margin-top:3.5%;
+}
+.machine_work_status_title{
+    margin-top:8%;
+    font-weight:500;
+    color:black;
+}
+.button_container {
+    text-align: right;
+}
+#machine_status_save_button{
+    background-color:black;
+    color:white;
+}

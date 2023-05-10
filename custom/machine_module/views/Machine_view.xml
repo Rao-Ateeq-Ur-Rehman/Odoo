@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--    TREE VIEW-->
+<!--    <record id="view_machine_tree" model="ir.ui.view">-->
+<!--        <field name="name">machine.data.tree</field>-->
+<!--        <field name="model">machine.data</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <tree>-->
+<!--                <field name="machineName" string="Machine Name"/>-->
+<!--                <field name="ppLotNum" string="PP Lot Num"/>-->
+<!--            </tree>-->
+<!--        </field>-->
+<!--    </record>-->
+    <!--    FORM VIEW-->
+    <record id="view_machine_form" model="ir.ui.view">
+        <field name="name">machine.data.form</field>
+        <field name="model">machine.data</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="machineName" style="border-bottom: 0.5px solid black;"/>
+                        <field name="ppLotNum" style="border-bottom: 0.5px solid black;"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_machine" model="ir.actions.act_window">
+        <field name="name">Machine Data</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">machine.data</field>
+        <field name="view_mode">form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Machine Record
+            </p>
+        </field>
+    </record>
+
+
+<!--     <record id="action_machine_status" model="ir.actions.act_window">-->
+<!--         <field name="name">Machine Status View</field>-->
+<!--         <field name="tag">machine_module.machine_status_screen_js</field>-->
+<!--    </record>-->
+
+    <record id="action_machine_status" model="ir.actions.client">
+        <field name="name">Machine Status View</field>
+        <field name="tag">machine_module.machine_status_screen_js</field>
+    </record>
+
+    <menuitem name="Machines" id="machine_menu" sequence="-1" action="action_machine"></menuitem>
+    <menuitem name="Machines Status" id="machine_status" sequence="1" action="action_machine_status" parent="machine_menu"></menuitem>
+</odoo>

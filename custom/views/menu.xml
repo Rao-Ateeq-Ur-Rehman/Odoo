@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="employee_main_menu"
+              name="Employees Main Menu"
+              sequence="0"
+    />
+<!--    <menuitem id="employee_sub_menu_1"-->
+<!--              name="Employees Sub Menu 1"-->
+<!--              parent="employee_main_menu"-->
+<!--              sequence="0"-->
+<!--    />-->
+
+</odoo>

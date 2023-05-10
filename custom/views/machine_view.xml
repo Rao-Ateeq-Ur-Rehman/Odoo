@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    <template id="my_template">-->
+    <!--        <div class="my-class">-->
+    <!--            <h1>My Page</h1>-->
+    <!--            <p t-esc="employee.data"/>-->
+    <!--            <p t-esc="model.description"/>-->
+    <!--        </div>-->
+    <!--    </template>-->
+    <record id="view_employee" model="ir.ui.view">
+        <field name="name">employee.machine</field>
+        <field name="model">employee.data</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <style>
+                        .machine_input_field{
+                        width:100% !important;
+                        border:0.5px solid black;
+                        margin-top:-0.5px;
+                        height:4.25vh;
+                        }
+                        select.machine_selector {
+                        width: 32%;
+                        border: 1px solid black;
+                        height: 5vh;
+                        font-size: 15px;
+                        font-weight: 600;
+                        color: black;
+                        margin-top: 2.5vh;
+                        padding-left: 2%;
+                        }
+                        select#sienging_machine_selector{
+                        margin-top:3.5%;
+                        }
+                        .machine_work_status_title{
+                        margin-top:8%;
+                        font-weight:500;
+                        color:black;
+                        }
+                        .button_container {
+                        text-align: right;
+                        }
+                        #machine_status_save_button{
+                        background-color:black;
+                        color:white;
+                        }
+                    </style>
+
+                    <div class="form_div">
+                        <h1 id="machine_status_title">Internal Machine Status</h1>
+                        <select name="selector" class="machine_selector">
+                            <option value="option1">Unrolling Machine</option>
+                            <option value="option2">Option 2</option>
+                            <option value="option3">Option 3</option>
+                            <option value="option4">Option 4</option>
+                        </select>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h3 class="machine_work_status_title">Queue</h3>
+                                    <input id="machine_status_queue_input_1" class="machine_input_field"></input>
+                                    <input id="machine_status_queue_input_2" class="machine_input_field"></input>
+                                    <input id="machine_status_queue_input_3" class="machine_input_field"></input>
+                                    <input id="machine_status_queue_input_4" class="machine_input_field"></input>
+                                    <input id="machine_status_queue_input_5" class="machine_input_field"></input>
+                                </div>
+                                <div class="col-md-4">
+                                    <h3 class="machine_work_status_title">Current</h3>
+                                    <input id="machine_status_current_input_1" class="machine_input_field"></input>
+                                    <input id="machine_status_current_input_2" class="machine_input_field"></input>
+                                    <input id="machine_status_current_input_3" class="machine_input_field"></input>
+                                    <input id="machine_status_current_input_4" class="machine_input_field"></input>
+                                    <input id="machine_status_current_input_5" class="machine_input_field"></input>
+                                </div>
+                                <div class="col-md-4">
+                                    <h3 class="machine_work_status_title">Pending</h3>
+                                    <input id="machine_status_pending_input_1" class="machine_input_field"></input>
+                                    <input id="machine_status_pending_input_2" class="machine_input_field"></input>
+                                    <input id="machine_status_pending_input_3" class="machine_input_field"></input>
+                                    <input id="machine_status_pending_input_4" class="machine_input_field"></input>
+                                    <input id="machine_status_pending_input_5" class="machine_input_field"></input>
+                                </div>
+                            </div>
+                        </div>
+                        <select name="selector" id="sienging_machine_selector" class="machine_selector">
+                            <option value="option1">Sienging Machine</option>
+                            <option value="option2">Option 2</option>
+                            <option value="option3">Option 3</option>
+                            <option value="option4">Option 4</option>
+                        </select>
+                        <select name="selector" class="machine_selector">
+                            <option value="option1">LBox</option>
+                            <option value="option2">Option 2</option>
+                            <option value="option3">Option 3</option>
+                            <option value="option4">Option 4</option>
+                        </select>
+                        <select name="selector" class="machine_selector">
+                            <option value="option1">Mercerizing</option>
+                            <option value="option2">Option 2</option>
+                            <option value="option3">Option 3</option>
+                            <option value="option4">Option 4</option>
+                        </select>
+                        <select name="selector" class="machine_selector">
+                            <option value="option1">Curing</option>
+                            <option value="option2">Option 2</option>
+                            <option value="option3">Option 3</option>
+                            <option value="option4">Option 4</option>
+                        </select>
+                        <select name="selector" class="machine_selector">
+                            <option value="option1">Laffer</option>
+                            <option value="option2">Option 2</option>
+                            <option value="option3">Option 3</option>
+                            <option value="option4">Option 4</option>
+                        </select>
+                        <select name="selector" class="machine_selector">
+                            <option value="option1">Danti</option>
+                            <option value="option2">Option 2</option>
+                            <option value="option3">Option 3</option>
+                            <option value="option4">Option 4</option>
+                        </select>
+                        <select name="selector" class="machine_selector">
+                            <option value="option1">Raising and Shearing</option>
+                            <option value="option2">Option 2</option>
+                            <option value="option3">Option 3</option>
+                            <option value="option4">Option 4</option>
+                        </select>
+                        <div class="button_container">
+                            <button id="machine_status_save_button">Save</button>
+                        </div>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_machine_view" model="ir.actions.act_window">
+        <field name="name">Machine View</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">employee.data</field>
+        <field name="view_mode">form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Employee Record
+            </p>
+        </field>
+    </record>
+<!--    <menuitem id="menu_machine_view"-->
+<!--              name="Machine View"-->
+<!--              parent="employee_main_menu"-->
+<!--              action="action_machine_view"-->
+<!--              sequence="0"-->
+<!--    />-->
+</odoo>

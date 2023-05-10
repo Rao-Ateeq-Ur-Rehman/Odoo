@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="machine_module.Machines" owl="1">
+        <div style="padding:2%">
+            <h2>Machine Status will be Displayed here</h2>
+            <table class="table">
+                <thead style="border:0.5px solid black">
+                  <tr>
+                    <th scope="col">Machine Number</th>
+                    <th scope="col">Name</th>
+                  </tr>
+                </thead>
+                <tbody style="border: 0.1px solid #0000006e;">
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Sienging Machine</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>LBox</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td colspan="2">Mercerizing</td>
+                  </tr>
+
+                </tbody>
+          </table>
+        </div>
+    </t>
+</templates>
